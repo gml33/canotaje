@@ -1,0 +1,54 @@
+{% extends "gestion/new_layout.html" %}
+{% block body %}
+
+<title>Detalle del alumno: {{alumno.id}}</title>
+<br>
+<h4>Nombre y Apellido: {{alumno.nombre}} {{alumno.apellido}}</h4>
+<br>
+<h4>Fecha de Nacimiento: {{alumno.fecha_nac}}, edad: {{alumno.edad}}</h4>
+<br>
+<h4>Direccion: {{alumno.direccion}}</h4>
+<hr>
+<center><h4>Cursos en los que participó</h4></center>
+<br>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col"><center>Id del curso</center></th>
+                    <th scope="col"><center>fecha de inicio del curso</center></th>
+                    <th scope="col"><center>fecha de finalizacion del curso</center></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for curso in cursos %}
+                <tr>
+                    <td><center>{{curso.id}}</center></td>
+                    <td><center>{{curso.fecha_inicio}}</center></td>    
+                    <td><center>{{curso.fecha_finalizacion}}</center></td>                                
+                    </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+<hr>
+{% if padre != None %}
+    <h4>Datos del padre: {{padre.id}}</h4>
+    <br>
+    <h4>Nombre y Apellido: {{padre.nombre}} {{padre.apellido}}</h4>
+    <br>
+    <h4>Teléfono: {{padre.telefono}}; Dirección: {{padre.direccion}}</h4>
+{% else %}
+<h4>No hay datos del padre del alumno.</h4>
+{% endif %}
+{% if madre != None %}
+    <h4>Datos de la madre: {{madre.id}}</h4>
+    <br>
+    <h4>Nombre y Apellido: {{madre.nombre}} {{madre.apellido}}</h4>
+    <br>
+    <h4>Teléfono: {{madre.telefono}}; Dirección: {{madre.direccion}}</h4>
+{% else %}
+<h4>No hay datos de la madre del alumno.</h4>
+{% endif %}
+<center><a class="btn btn-primary" href={% url 'gestion:ver_alumnos'%} role="button">Volver</a></center>
+{% endblock %}

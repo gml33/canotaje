@@ -1,0 +1,25 @@
+{% extends "gestion/new_layout.html" %}
+{% block body %}
+<h2><center>Agregar Curso</center></h2>
+    <form method="POST">
+    {% csrf_token %}
+    <div class='form-goup'>
+        <label for="fecha_inicio">Fecha de Inicio: </label>
+        <input type="date" name="fecha_inicio" required></input>
+    </div>
+    <div class='form-goup'>
+        <label for="fecha_finalizacion">Fecha de Finalización: </label>
+        <input type="date" name="fecha_finalizacion" required></input>
+    </div>
+    <div class='form-goup'>
+        <label for="contenido">Contenido: </label>
+        <textarea name="contenido" rows="4" cols="40"></textarea>
+    </div>
+    <div class='form-goup'>
+        <label for="descripcion">Descripcion: </label>
+        <textarea name="descripcion" rows="4" cols="40"></textarea>
+    </div>
+    <center><button type="reset" class="btn btn-danger btn-lg">Borrar</button>
+    <button type="submit" class="btn btn-success btn-lg">Registrar Curso</button></center>
+    </form> 
+{% endblock %}

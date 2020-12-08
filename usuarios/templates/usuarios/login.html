@@ -1,0 +1,20 @@
+{% extends 'usuarios/layout.html' %}
+
+{% block body %}
+    <br>
+    <div class="login-form">
+    <form action="{% url 'usuarios:login' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-control">
+        <input type="text", name="username", placeholder="Usuario">
+    </div>
+    <div class="form-control">
+        <input class="fadeIn", type="password", name="password", placeholder="Contraseña">
+    </div>
+    <div class="form-control">
+        <input type="submit" class="fadeIn" value="Log In">
+    </div>      
+    </form>
+    </div>
+
+{% endblock %} 

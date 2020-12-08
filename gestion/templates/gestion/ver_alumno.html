@@ -1,0 +1,39 @@
+{% extends "gestion/new_layout.html" %}
+{% block body %}
+<title>Alumnos</title>
+<br>
+{% if data %}
+    <h2><center>Alumnos</center></h2>
+    <br>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col"><center>Id</center></th>
+                    <th scope="col"><center>Nombre</center></th>
+                    <th scope="col"><center>Apellido</center></th>
+                    <th scope="col"><center>Edad</center></th>
+                    <th scope="col"><center>Dirección</center></th>
+                    <th scope="col"><center>Detalle</center></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for alumno in data %}
+                <tr>
+                    <td><center>{{alumno.id}}</center></td>    
+                    <td><center>{{alumno.nombre}}</center></td>
+                    <td><center>{{alumno.apellido}}</center></td>
+                    <td><center>{{alumno.edad}}</center></td>
+                    <td><center>{{alumno.direccion}}</center></td>
+                    <td><center><a href={% url 'gestion:detalle_alumno' alumno.id %}>Ver</a></center></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}    
+    <h2><center>No hay Alumnos</center></h2>
+    <br>
+{% endif %}
+
+{% endblock %}

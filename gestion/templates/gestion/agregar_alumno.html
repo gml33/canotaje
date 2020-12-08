@@ -1,0 +1,42 @@
+{% extends "gestion/new_layout.html" %}
+
+{% block body %}
+<h2><center>Agregar Alumno</center></h2>
+    <form method="POST">
+    {% csrf_token %}
+    <div class='form-goup'>
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre"></input>
+    </div>
+    <div class='form-goup'>
+        <label for="apellido">Apellido: </label>
+        <input type="text" name="apellido" ></input>
+    </div>
+    <div class='form-goup'>
+        <label for="fecha_nac">Fecha de Nacimiento: </label>
+        <input type="date" name="fecha_nac" ></input>
+    </div>
+    <div class='form-goup'>
+        <label for="edad">Edad: </label>
+        <input type="number" name="edad" ></input>
+    </div>
+    <div class='form-goup'>
+        <label for="direccion">Direccion: </label>
+        <input type="text" name="direccion" ></input>
+    </div>
+    <div class='form-goup'>
+        <label for="observaciones">Observaciones: </label>
+        <textarea name="observaciones" rows="4" cols="50"></textarea>
+    </div>
+    <div class='form-group multiple'>
+        <label for="curso">Seleccionar Curso</label>
+        <select name="curso" multiple required>
+        {% for curso in cursos %}
+            <option value="{{curso.id}}">{{curso.fecha_inicio}} -- {{curso.fecha_finalizacion}}</option> 
+        {% endfor %}
+        </select>
+    </div>
+    <center><button type="reset" class="btn btn-danger btn-lg">Borrar</button>
+    <button type="submit" class="btn btn-success btn-lg">Registrar Alumno</button></center>
+    </form> 
+{% endblock %}
