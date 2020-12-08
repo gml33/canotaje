@@ -56,8 +56,9 @@ def detalle_alumno(request, id):
     else:
         madre = None
     alumno = Alumno.objects.get(id=id)
+    cursos = Curso.objects.filter(alumno=id)
     return render(request, 'gestion/detalle_alumno.html',{
-        'cursos': Curso.objects.all(),
+        'cursos': cursos,
         'padre':padre,
         'madre':madre,
         'alumno':alumno,

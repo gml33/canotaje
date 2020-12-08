@@ -11,7 +11,7 @@ urlpatterns = [
     path('alumno/', views.ver_alumnos, name='ver_alumnos'),    
     path('alumno/detalle/<int:id>/', views.detalle_alumno, name='detalle_alumno'),
     #path('editar/alumno/<int:id>', views.editar_alumno, name='editar_alumno'),
-    #path('alumno/<int:id>/eliminar', views.eliminar_alumno, name='eliminar_alumno'),    
+    #path('alumno/<int:id>/eliminar', views.eliminar_alumno, name='eliminar_alumno'),
     path('agregar/alumno/', views.agregar_alumno, name='agregar_alumno'),
     #------------------------Cursos------------------------------------------------------
     path('curso/', views.ver_cursos, name='ver_cursos'),
