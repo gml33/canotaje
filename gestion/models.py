@@ -41,5 +41,6 @@ class Pago(models.Model):
     Alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE, related_name='nombre_instructor')
     fecha = models.DateField(auto_now_add=False, auto_now=False, blank=False)
     monto = models.IntegerField()
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE, related_name='pago_curso')
     def __str__(self):
         return f'monto: {self.monto}, fecha: {self.fecha}, alumno: {self.Alumno}'
