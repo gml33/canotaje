@@ -32,7 +32,7 @@
         <label for="curso">Seleccionar Curso</label>
         <select name="curso" multiple required>
         {% for curso in cursos %}
-            <option value="{{curso.id}}">{{curso.fecha_inicio}} -- {{curso.fecha_finalizacion}}</option> 
+            <option value="{{curso.id}}">{{curso.id}} -- {{curso.fecha_inicio}} -- {{curso.fecha_finalizacion}}</option> 
         {% endfor %}
         </select>
     </div>

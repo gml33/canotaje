@@ -10,7 +10,16 @@ from django.core.exceptions import ObjectDoesNotExist
 import operator
 
 def index(request):
+    if len(Alumno.objects.all()) > 0:
+        data = Alumno.objects.all()
+    else:
+        data = None
     return render(request, 'gestion/index.html',{
+        'data':data,
+        'cantidad_alumnos':Alumno.objects.all().count(),
+        'cantidad_cursos':Curso.objects.all().count(),
+        'ultimo_curso':Curso.objects.last(),
+        'alumnos_ultimo_curso':Alumno.objects.filter(curso = Curso.objects.last()).count(),
     })
 #----------------------------Alumnos-----------------------------------------------------
 def ver_alumnos(request):
@@ -35,7 +44,6 @@ def agregar_alumno(request):
             direccion = form.cleaned_data['direccion']
             observaciones = form.cleaned_data['observaciones']
             curso = form.cleaned_data['curso']
-            #print(request.POST)
             form.save()
             messages.success(request, ('El Alumno fue cargado exitosamente.'))
             return HttpResponseRedirect(reverse('gestion:index'))                

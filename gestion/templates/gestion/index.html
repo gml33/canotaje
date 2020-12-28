@@ -3,45 +3,21 @@
 
 <title>Turnos</title>
 <br>
-{% if turnos != None %}
-    <h2><center>Turnos</center></h2>
+{% if data != None %}
+    <h2>Cantidad de alumnos registrados: {{cantidad_alumnos}}</h2>
     <br>
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-                <tr class="table-success">
-                    <th scope="col"><center>Id</center></th>
-                    <th scope="col"><center>Fecha</center></th>
-                    <th scope="col"><center>Paciente</center></th>
-                    <th scope="col"><center>Especialista</center></th>
-                    <th scope="col"><center>Cumplió</center></th>
-                    <th scope="col"><center>Acciones</center></th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for turno in turnos %}
-                <tr>
-                    <td><center>{{turno.id}}</center></td>    
-                    <td><center>{{turno.fecha}}</center></td>
-                    <td><center>{{turno.paciente}}</center></td>
-                    <td><center>{{turno.medico}}</center></td>
-                    {% if turno.cumplio %}
-                        <td><center>Si</center></td>
-                    {% else %}
-                        <td><center>No</center></td>
-                    {% endif %}
-                    <td><center>
-                    <a href="{% url 'optometria:editar_turno' turno.id%}">Editar</a>
-                    <a> - </a>
-                    <a href="{% url 'optometria:eliminar_turno' turno.id%}">Eliminar</a>
-                    </center></td>                                
-                    </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <h2>Cursos Dictados: {{cantidad_cursos}}</h2>
+    <hr>
+    <h2>último curso:</h2>
+    <br>
+    <h2>Fecha de Inicio: {{ultimo_curso.fecha_inicio}}</h2>
+    <br>
+    <h2>Fecha de finalización: {{ultimo_curso.fecha_finalizacion}}</h2>
+    <br>
+    <h2>Alumnos inscriptos en el curso: {{alumnos_ultimo_curso}}</h2>
+    <br>
 {% else %}    
-    <h2><center>---</center></h2>
+    <h2><center>No hay información sobre alumnos o cursos dictados.</center></h2>
     <br>
 {% endif %}
 {% endblock %}
