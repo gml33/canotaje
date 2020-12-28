@@ -1,5 +1,5 @@
 from django import forms
-from .models import *
+from .models import Alumno, PadreAlumno, MadreAlumno, Curso, Pago
 
 class AlumnoForm(forms.ModelForm):
     class Meta:

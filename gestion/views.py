@@ -93,31 +93,41 @@ def agregar_curso(request):
     return render(request, 'gestion/agregar_curso.html',{
         })
 #----------------------------Pagos-------------------------------------------------------
-'''
 def ver_pagos(request):
+    
     if len(Pago.objects.all()) > 0:
         data = Pago.objects.all()
     else:
         data = None
-    return render(request, 'gestion/ver_pago.html',{
-        'grupo': request.user.rol,
+    return render(request, 'gestion/ver_pagos.html',{
         'data': data,
         })
 
-def agregar_curso(request):    
+def agregar_pago(request):    
     if request.method == 'POST':
-        form = CursoForm(request.POST)
+        form = PagoForm(request.POST)
+        print(request.POST)
         if form.is_valid():
-            fecha_inicio = form.cleaned_data['fecha_inicio']
-            fecha_finalizacion = form.cleaned_data['fecha_finalizacion']
-            contenido = form.cleaned_data['contenido']
-            descripcion = form.cleaned_data['descripcion']
+            alumno = form.cleaned_data['alumno']
+            fecha = form.cleaned_data['fecha']
+            monto = form.cleaned_data['monto']
+            curso = form.cleaned_data['curso']
             form.save()
-            messages.success(request, ('El Curso fue cargado exitosamente.'))
+            messages.success(request, ('El pago fue registrado con éxito.'))
             return HttpResponseRedirect(reverse('gestion:index'))                
         else:
-            form = AlumnoForm()
-    return render(request, 'gestion/agregar_curso.html',{
-        'grupo': request.user.rol,
+            form = PagoForm()
+    return render(request, 'gestion/agregar_pago.html',{
+        'alumnos': Alumno.objects.all(),
+        'cursos': Curso.objects.all(),
         })
-        '''
+
+def detalle_pago(request, id):
+    alumno = Alumno.objects.get(id=id)
+    cursos = Curso.objects.filter(alumno=id)
+    return render(request, 'gestion/detalle_alumno.html',{
+        'cursos': cursos,
+        'padre':padre,
+        'madre':madre,
+        'alumno':alumno,
+        })

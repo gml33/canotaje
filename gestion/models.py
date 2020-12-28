@@ -6,6 +6,8 @@ class Curso(models.Model):
     fecha_finalizacion = models.DateField(auto_now_add=False, auto_now=False)
     contenido = models.TextField(blank=True)
     descripcion = models.TextField(blank=True)
+    def __str__(self):
+        return f'ID: {self.id} -- {self.fecha_inicio} al {self.fecha_finalizacion}'
 
 class Alumno(models.Model):
     nombre = models.CharField(max_length=32)
@@ -38,7 +40,7 @@ class MadreAlumno(models.Model):
         return f'{self.nombre} {self.apellido} Madre de :{self.alumno}'
 
 class Pago(models.Model):
-    Alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE, related_name='nombre_instructor')
+    alumno = models.ForeignKey(Alumno, on_delete=models.CASCADE, related_name='nombre_instructor')
     fecha = models.DateField(auto_now_add=False, auto_now=False, blank=False)
     monto = models.IntegerField()
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, related_name='pago_curso')

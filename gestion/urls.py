@@ -19,4 +19,9 @@ urlpatterns = [
     #path('editar/curso/<int:id>', views.editar_curso, name='editar_curso'),
     #path('curso/<int:id>/eliminar', views.eliminar_curso, name='eliminar_curso'),
     #------------------------Pago--------------------------------------------------------
+    path('pagos/', views.ver_pagos, name='ver_pagos'),
+    #path('pago/detalle/<int:id>/', views.detalle_pago, name='detalle_pago'),
+    path('agregar/pago/', views.agregar_pago, name='agregar_pago'),
+    #path('editar/curso/<int:id>', views.editar_curso, name='editar_curso'),
+    #path('curso/<int:id>/eliminar', views.eliminar_curso, name='eliminar_curso'),
     ]

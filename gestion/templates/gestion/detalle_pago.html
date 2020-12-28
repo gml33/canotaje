@@ -1,0 +1,15 @@
+{% extends "gestion/new_layout.html" %}
+{% block body %}
+
+<title>Detalle del pago ID '{{pago.id}}'.</title>
+<br>
+<h4>Nombre y Apellido del alumno: {{pago.alumno}}</h4>
+<br>
+<h4>Fecha: {{pago.fecha}}</h4>
+<br>
+<h4>Monto: ${{pago.monto}}</h4>
+<br>
+<h4>Curso id: {{pago.curso}}.</h4>
+<hr>
+<center><a class="btn btn-primary" href={% url 'gestion:ver_pagos'%} role="button">Volver</a></center>
+{% endblock %}
