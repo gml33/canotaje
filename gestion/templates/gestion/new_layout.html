@@ -20,27 +20,24 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">    
+    <ul class="navbar-nav mr-auto">
     <!-- aca hay que poner el bloque de if segun rol de usuario-->
-    <li class="nav-item">
-      <a class="nav-link active" href="{% url 'gestion:ver_alumnos'%}">ver alumnos</a>
-    </li>  
-    <li class="nav-item">
-      <a class="nav-link active" href="{% url 'gestion:agregar_alumno'%}">agregar alumno</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="{% url 'gestion:ver_cursos'%}">ver cursos</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="{% url 'gestion:agregar_curso'%}">agregar curso</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="{% url 'gestion:ver_pagos'%}">ver pagos</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="{% url 'gestion:agregar_pago'%}">registrar pago</a>
-    </li>
-            
+    <div class="dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Agregar</a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="{% url 'gestion:agregar_alumno'%}">Alumno</a>
+        <a class="dropdown-item" href="{% url 'gestion:agregar_curso'%}">Curso</a>
+        <a class="dropdown-item" href="{% url 'gestion:agregar_pago'%}">Pago</a>
+      </div>
+    </div>
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ver</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'gestion:ver_alumnos'%}">Alumnos</a>
+          <a class="dropdown-item" href="{% url 'gestion:ver_cursos'%}">Cursos</a>
+          <a class="dropdown-item" href="{% url 'gestion:ver_pagos'%}">Pagos</a>
+        </div>
+      </div>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a class="navbar-brand" href="{% url 'usuarios:logout' %}">Cerrar Sesión</a></li>
@@ -59,10 +56,12 @@
         </button>
         </div>
       {% endfor %}
-    {% endif %}
-    {% block body %}
-      
-    {% endblock %}
+{% endif %}
+
+
+{% block body %}
+
+{% endblock %}
 
 </div>
 <script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>

@@ -93,8 +93,7 @@ def agregar_curso(request):
     return render(request, 'gestion/agregar_curso.html',{
         })
 #----------------------------Pagos-------------------------------------------------------
-def ver_pagos(request):
-    
+def ver_pagos(request):    
     if len(Pago.objects.all()) > 0:
         data = Pago.objects.all()
     else:
